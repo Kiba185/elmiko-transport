@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 
 // TopoJSON with world geography
@@ -15,10 +16,8 @@ const supportedCountriesInfo: Record<string, { id: string, name: string, flag: s
   "Slovakia": { id: 'slovensko', name: 'Slovensko', flag: '🇸🇰', coordinates: [19.6990, 48.6690] },
   "Italy": { id: 'italie', name: 'Itálie', flag: '🇮🇹', coordinates: [12.5674, 41.8719] },
   "France": { id: 'francie', name: 'Francie', flag: '🇫🇷', coordinates: [2.2137, 46.2276] },
-  "Spain": { id: 'spanelsko', name: 'Španělsko', flag: '🇪🇸', coordinates: [-3.7492, 40.4637] },
   "Hungary": { id: 'madarsko', name: 'Maďarsko', flag: '🇭🇺', coordinates: [19.5033, 47.1625] },
-  "Romania": { id: 'rumunsko', name: 'Rumunsko', flag: '🇷🇴', coordinates: [24.9668, 45.9432] },
-  "Netherlands": { id: 'nizozemsko', name: 'Nizozemsko', flag: '🇳🇱', coordinates: [5.2913, 52.1326] },
+  "Netherlands": { id: 'holandsko', name: 'Holandsko', flag: '🇳🇱', coordinates: [5.2913, 52.1326] },
   "Belgium": { id: 'belgie', name: 'Belgie', flag: '🇧🇪', coordinates: [4.4699, 50.5039] },
 };
 
@@ -26,6 +25,7 @@ const supportedCountriesList = Object.values(supportedCountriesInfo);
 
 export default function InteractiveMap() {
   const [tooltipContent, setTooltipContent] = useState("");
+  const router = useRouter();
 
   return (
     <div className="flex flex-col lg:flex-row gap-12 items-center bg-zinc-900 border border-border p-8 mt-12">

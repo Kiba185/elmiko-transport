@@ -10,12 +10,16 @@ const countries: Record<string, string> = {
   slovensko: 'Slovensko',
   italie: 'Itálie',
   francie: 'Francie',
-  spanelsko: 'Španělsko',
   madarsko: 'Maďarsko',
-  rumunsko: 'Rumunsko',
-  nizozemsko: 'Nizozemsko',
+  holandsko: 'Holandsko',
   belgie: 'Belgie',
 };
+
+export function generateStaticParams() {
+  return Object.keys(countries).map((country) => ({
+    country: country,
+  }));
+}
 
 // Next.js 15 requires params to be awaited
 export default async function CountryTransportPage({
