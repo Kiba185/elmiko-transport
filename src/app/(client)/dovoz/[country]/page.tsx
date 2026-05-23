@@ -15,12 +15,6 @@ const countries: Record<string, string> = {
   belgie: 'Belgie',
 };
 
-export function generateStaticParams() {
-  return Object.keys(countries).map((country) => ({
-    country: country,
-  }));
-}
-
 // Next.js 15 requires params to be awaited
 export default async function CountryTransportPage({
   params,
@@ -84,4 +78,21 @@ export default async function CountryTransportPage({
       </section>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+ // Přepište tyto hodnoty podle toho, jaké státy skutečně používáte v odkazech
+ return [
+   { country: 'nemecko' },
+   { country: 'rakousko' },
+    { country: 'polsko' },
+    { country: 'slovensko' },
+   { country: 'itálie' },
+   { country: 'francie' },
+   { country: 'madarsko' },
+   { country: 'holandsko' },
+   { country: 'belgie' },
+
+
+ ];
 }
